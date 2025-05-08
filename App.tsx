@@ -27,6 +27,7 @@ import {
 import {SafeAreaView} from 'react-native';
 import {WebView} from 'react-native-webview';
 import {TestWebview} from './TestWebview';
+import {TestWebview2} from './TestWebview2';
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -60,7 +61,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const [showWebView, setShowWebView] = useState(false);
-
+  const [showWebView2, setShowWebView2] = useState(false);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -83,7 +84,10 @@ function App(): React.JSX.Element {
       ) : (
         <Button title="open" onPress={() => setShowWebView(!showWebView)} />
       )}
+
+      <Button title="open2" onPress={() => setShowWebView2(!showWebView2)} />
       {showWebView && <TestWebview />}
+      {showWebView2 && <TestWebview2 />}
     </View>
   );
 }

@@ -23,7 +23,7 @@ const fetchJwtToken = async () => {
   return data.token;
 };
 
-export function TestWebview() {
+export function TestWebview2() {
   const [jwtToken, setJwtToken] = useState<string>('');
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function TestWebview() {
       onPressedBackInMain={() => {
         console.log('onPressedBackInMain');
       }}
-      url={`${origin}/commerce/raffles/341`}
+      url={`${origin}/commerce/raffles`}
     />
   );
 }

@@ -34,14 +34,14 @@ export function MoneytreeWebview({
   onEventReceived,
   mode = MoneytreeMode.PROD,
   onPressedBackInMain,
-  onClose,
+  url,
 }: {
   jwtToken: string;
   onInit?: () => void;
   onEventReceived: (event: MoneytreeEvent) => void;
   mode?: MoneytreeMode;
   onPressedBackInMain?: () => void;
-  onClose?: () => void;
+  url?: string;
 }) {
   const webviewRef = useRef<WebView>(null);
   const origin = getMoneytreeOrigin(mode);
@@ -97,9 +97,6 @@ export function MoneytreeWebview({
             onPressedBackInMain?.();
           }
           break;
-        case 'close':
-          onClose?.();
-          break;
       }
     } catch (error) {
       console.error(error);
@@ -109,10 +106,10 @@ export function MoneytreeWebview({
   return (
     <WebView
       source={{
-        uri: `${origin}/commerce/raffles`,
+        uri: url || `${origin}/commerce`,
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `hihihi`,
+          Authorization: 'Bearer hihi',
           'X-API-KEY': 'ef5a8f23-ebd4-47cb-a159-118bee406380',
         },
       }}
